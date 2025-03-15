@@ -7,12 +7,16 @@ interface PokemonModalProps {
   pokemon: Pokemon;
   onClose: () => void;
   loading?: boolean;
+  isFavorite: boolean;
+  onToggleFavorite: (name: string) => void;
 }
 
 const PokemonModal: React.FC<PokemonModalProps> = ({
   pokemon,
   onClose,
   loading = false,
+  isFavorite,
+  onToggleFavorite,
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -55,16 +59,36 @@ const PokemonModal: React.FC<PokemonModalProps> = ({
               className={styles.image}
               priority
             />
-            {pokemon.sound && (
-              <>
-                <audio ref={audioRef} src={pokemon.sound} />
-                <button className={styles.soundButton} onClick={playSound} aria-label="Play Pokemon sound">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
-                  </svg>
-                </button>
-              </>
-            )}
+            <div className={styles.imageControls}>
+              <button
+                className={styles.favoriteButton}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleFavorite(pokemon.name);
+                }}
+                data-favorite={isFavorite}
+                aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+              >
+                <svg 
+                  viewBox="0 0 24 24" 
+                  fill={isFavorite ? 'currentColor' : 'none'}
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </button>
+              {pokemon.sound && (
+                <>
+                  <audio ref={audioRef} src={pokemon.sound} />
+                  <button className={styles.soundButton} onClick={playSound} aria-label="Play Pokemon sound">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
           </div>
 
           <div className={styles.details}>

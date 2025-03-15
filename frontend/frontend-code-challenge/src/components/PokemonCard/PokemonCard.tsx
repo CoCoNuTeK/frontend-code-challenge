@@ -79,6 +79,8 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
         pokemon={modalData}
         onClose={() => setIsModalOpen(false)}
         loading={isLoading}
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
       />
     );
   };
