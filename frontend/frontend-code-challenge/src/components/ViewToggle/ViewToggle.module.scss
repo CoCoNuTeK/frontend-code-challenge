@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid #00B67A;
+  border-radius: 0.5rem;
+  padding: 2px;
+  height: 2.5rem;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: calc(2.5rem - 4px);
+  aspect-ratio: 1;
+  border: none;
+  background: transparent;
+  color: #00B67A;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: calc(0.5rem - 2px);
+
+  &:hover {
+    background-color: rgba(0, 182, 122, 0.05);
+  }
+
+  &.active {
+    background-color: #00B67A;
+    color: #fff;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+} 

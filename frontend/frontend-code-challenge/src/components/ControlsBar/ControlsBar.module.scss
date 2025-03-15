@@ -1,0 +1,76 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.5rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  align-items: center;
+  height: 4rem;
+}
+
+.searchSection {
+  grid-column: 1 / span 4;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.filterSection {
+  grid-column: 6 / span 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.toggleSection {
+  grid-column: 11 / span 2;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.searchCol {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  max-width: 400px;
+}
+
+.filterCol {
+  flex: 0 0 150px;
+}
+
+.toggleCol {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.leftControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.rightControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+} 
